@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import DashboardRoutes from './dashboardroutes'
+import Home from './home'
 
 function App() {
   return (
     // <BrowserRouter>
-    <DashboardRoutes />
+    <Home />
     // </BrowserRouter>
   )
 }
