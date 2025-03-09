@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./dashboard"; // Home page
-import Listings from "./listings";
-import Profile from "./profile";
-import Navbar from "./Navbar";
-
+import Dashboard from "./pages/dashboard";
+import Listings from "./pages/listings";
+import Profile from "./pages/profile";
+import Navbar from "./components/Navbar";
+import ListingProfile from "./pages/ListingProfile";
 function Home() {
   return (
     <Router>
@@ -13,8 +13,11 @@ function Home() {
 
       {/* Routes for different pages */}
       <Routes>
-        <Route path="/" element={<Dashboard />} /> {/* Home */}
-        <Route path="/listings" element={<Listings />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/listings">
+          <Route index element={<Listings/>}/>
+          <Route path="1" element={<ListingProfile/>}/>
+        </Route>
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
