@@ -41,11 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< Updated upstream
-=======
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
->>>>>>> Stashed changes
   }
 }
