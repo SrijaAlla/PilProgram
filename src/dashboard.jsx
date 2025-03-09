@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import BackgroundHouses from "./backgroundhouses";
 import Greeting from "./Greeting";
 import Listings from "./listings"; // Import the existing Listings component
@@ -9,71 +9,109 @@ import { Link } from "react-router-dom";
 function Dashboard() {
   return (
     <Box
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
-      sx={{ overflowX: "hidden", paddingTop: "40px" }}
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", lg: "row" }, // Responsive: Column on small screens, row on large screens
+        alignItems: "flex-start",
+        // justifyContent: "space-between",
+        width: "100%",
+        overflowX: "hidden",
+        overflowY: "hidden", // Prevent vertical scroll
+        padding: "40px 0px 0px 0px",
+        gap: { xs: "20px", lg: "40px" }, // Adjust spacing for different screen sizes
+      }}
     >
-      {/* Greeting */}
-      <Box sx={{ width: "30%", textAlign: "center" }}>
-        <Greeting name="Doris" />
+      {/* Greeting Section (Hi Doris) - Left Side */}
+      <Box
+        sx={{
+          width: { xs: "100%", lg: "40%" }, // Larger on desktop, full width on mobile
+          textAlign: "center",
+          // paddingLeft: "3em",
+        }}
+      >
+        <Greeting name="Paige" />
       </Box>
 
-      {/* Preview Section with Full Listings & Leads Components */}
+      {/* Right Section: Leads (Popular) and Listings (Apartment around London) */}
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          width: "60%",
-          maxHeight: "400px",
-          gap: "40px",
-          overflowX: "hidden",
+          flexDirection: "column",
+          width: { xs: "100%", lg: "50%" }, // Smaller width on desktop, full width on mobile
+          gap: "30px",
+
+          color: "brown",
         }}
       >
-        <Link
-          to="/listings"
-          style={{ textDecoration: "none", color: "inherit", width: "45%" }}
-        >
-          <Box
+        {/* Leads Section (Popular) */}
+        <Box>
+          <Typography
+            variant="h6"
             sx={{
-              backgroundColor: "#FCE8E6",
-              borderRadius: "15px",
-              padding: "20px",
-              // minHeight: "150px",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              cursor: "pointer",
-              "&:hover": { backgroundColor: "#f8d7da" },
-              overflow: "hidden",
+              fontWeight: "bold",
+              marginBottom: "15px",
+              textTransform: "uppercase",
+              fontFamily: "'Playfair Display', serif",
             }}
           >
-            <Listings preview={true} />
-          </Box>
-        </Link>
+            Leads
+          </Typography>
+          <Link
+            to="/leads"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#fef6e4",
+                borderRadius: "10px",
+                padding: "15px",
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                cursor: "pointer",
+                "&:hover": { boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)" },
+                textAlign: "center",
+              }}
+            >
+              {/* <Leads preview={true} /> */}
+            </Box>
+          </Link>
+        </Box>
 
-        {/* Wrap Leads in a Clickable Box */}
-        <Link
-          to="/leads"
-          style={{ textDecoration: "none", color: "inherit", width: "45%" }}
-        >
-          <Box
+        {/* Listings Section (Apartment around London) */}
+        <Box>
+          <Typography
+            variant="h6"
             sx={{
-              backgroundColor: "#FCE8E6",
-              borderRadius: "15px",
-              padding: "20px",
-              // maxHeight: "250px",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              cursor: "pointer",
-              "&:hover": { backgroundColor: "#f8d7da" },
-              // overflow: "hidden",
+              fontWeight: "bold",
+              marginBottom: "15px",
+              textTransform: "uppercase",
+              fontFamily: "'Playfair Display', serif",
             }}
-          ></Box>
-        </Link>
+          >
+            Listings
+          </Typography>
+          <Link
+            to="/listings"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#fef6e4",
+                borderRadius: "10px",
+                padding: "15px",
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                cursor: "pointer",
+                "&:hover": { boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)" },
+                textAlign: "center",
+              }}
+            >
+              <Listings preview={true} />
+            </Box>
+          </Link>
+        </Box>
       </Box>
 
       {/* Background Houses */}
-      {/* <Box sx={{ marginTop: "40px", width: "100%", overflowX: "hidden" }}> */}
       <BackgroundHouses />
-      {/* </Box> */}
     </Box>
   );
 }
