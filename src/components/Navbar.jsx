@@ -4,13 +4,20 @@ import {
   Toolbar,
   Typography,
   Box,
-  Avatar,
   Badge,
   IconButton,
+  Avatar,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+<<<<<<< HEAD:src/components/Navbar.jsx
 import logo from "./../assets/house_logo.png"; // Ensure the path is correct
+=======
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SearchIcon from "@mui/icons-material/Search";
+import logo from "./assets/house_logo.png"; // Ensure the path is correct
+import profilePic from "./assets/profile.png"; // Replace with actual profile image
+>>>>>>> landing-page:src/Navbar.jsx
 
 function Navbar() {
   const location = useLocation();
@@ -46,16 +53,13 @@ function Navbar() {
             component="img"
             src={logo}
             alt="Estates"
-            sx={{ height: 40, mr: 1 }}
+            sx={{ height: 60, mr: 1 }}
           />
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              // fontWeight: "bold",
               textTransform: "uppercase",
               fontFamily: "'Playfair Display', serif",
-
-              // fontSize: "28px", // Adjust size to match the style
             }}
           >
             Parliamade
@@ -72,7 +76,6 @@ function Navbar() {
               sx={{
                 textDecoration: "none",
                 fontFamily: "'Playfair Display', serif",
-
                 color: activeTab === link.path ? "brown" : "black",
                 fontSize: "16px",
                 fontWeight: activeTab === link.path ? "bold" : "normal",
@@ -95,8 +98,13 @@ function Navbar() {
           ))}
         </Box>
 
-        {/* Right - Notifications and Profile */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        {/* Right - Search, Notifications, and Profile */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+          {/* Search Icon */}
+          <IconButton>
+            <SearchIcon sx={{ color: "black" }} />
+          </IconButton>
+
           {/* Notification Bell with Badge */}
           <IconButton component={Link} to="/notifications">
             <Badge badgeContent={1} color="error">
@@ -104,14 +112,40 @@ function Navbar() {
             </Badge>
           </IconButton>
 
-          {/* Profile Avatar */}
-          <Avatar
-            sx={{ bgcolor: "gray", cursor: "pointer" }}
-            component={Link}
+          {/* Profile Section - Clicking redirects to Profile Page */}
+          <Link
             to="/profile"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "5px 10px",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
           >
-            G
-          </Avatar>
+            {/* Profile Picture */}
+            <Avatar
+              src={profilePic}
+              alt="Profile"
+              sx={{ width: 40, height: 40 }}
+            />
+
+            {/* Profile Info */}
+            <Box sx={{ textAlign: "left" }}>
+              <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
+                Vetrick W.
+              </Typography>
+              <Typography sx={{ fontSize: "12px", color: "gray" }}>
+                Vetrick@gmail.com
+              </Typography>
+            </Box>
+
+            {/* Dropdown Arrow */}
+            <KeyboardArrowDownIcon sx={{ color: "black" }} />
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

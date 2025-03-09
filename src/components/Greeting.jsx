@@ -10,7 +10,7 @@ const Greeting = ({ name }) => {
       const timeout = setTimeout(() => {
         setDisplayText((prev) => prev + fullText[index]);
         setIndex(index + 1);
-      }, 150); // Adjust speed of typing effect
+      }, 100); // Adjust speed of typing effect
       return () => clearTimeout(timeout);
     }
   }, [index, fullText]);
