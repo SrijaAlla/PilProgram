@@ -4,6 +4,7 @@ import Dashboard from "./pages/dashboard";
 import Listings from "./pages/listings";
 import Profile from "./pages/profile";
 import Navbar from "./components/Navbar";
+import Leads from "./pages/leads";
 import ListingProfile from "./pages/ListingProfile";
 function Home() {
   return (
