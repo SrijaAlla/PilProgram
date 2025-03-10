@@ -6,7 +6,7 @@ const images = importAll(
   require.context("./../assets/listings", false, /\.(png|jpe?g|svg)$/)
 );
 
-function Listings({ preview = false }) {
+function Leads({ preview = false }) {
   const displayedImages = preview ? images.slice(0, 5) : images;
 
   return (
@@ -28,4 +28,4 @@ function Listings({ preview = false }) {
   );
 }
 
-export default Listings;
+export default Leads;

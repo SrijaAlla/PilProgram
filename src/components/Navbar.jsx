@@ -1,23 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  Badge,
-  IconButton,
-  Avatar,
-} from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import { IconButton, Badge, Avatar } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-<<<<<<< HEAD:src/components/Navbar.jsx
-import logo from "./../assets/house_logo.png"; // Ensure the path is correct
-=======
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
-import logo from "./assets/house_logo.png"; // Ensure the path is correct
-import profilePic from "./assets/profile.png"; // Replace with actual profile image
->>>>>>> landing-page:src/Navbar.jsx
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import logo from "./../assets/house_logo.png";
+import profilePic from "./../assets/profile.png";
 
 function Navbar() {
   const location = useLocation();
@@ -34,121 +22,60 @@ function Navbar() {
   ];
 
   return (
-    <AppBar
-      position="static"
-      color="transparent"
-      elevation={0}
-      sx={{ padding: "10px" }}
-    >
-      <Toolbar
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <nav className="bg-transparent p-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center">
         {/* Left - Logo */}
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box
-            component="img"
-            src={logo}
-            alt="Estates"
-            sx={{ height: 60, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            sx={{
-              textTransform: "uppercase",
-              fontFamily: "'Playfair Display', serif",
-            }}
-          >
-            Parliamade
-          </Typography>
-        </Box>
+        <div className="flex items-center">
+          <img src={logo} alt="Estates" className="h-12 mr-2" />
+          <h1 className="text-xl font-serif uppercase">Parliamade</h1>
+        </div>
 
         {/* Center - Navigation Links */}
-        <Box sx={{ display: "flex", gap: 4, position: "relative" }}>
+        <div className="flex space-x-6">
           {navLinks.map((link) => (
-            <Typography
+            <Link
               key={link.path}
-              component={Link}
               to={link.path}
-              sx={{
-                textDecoration: "none",
-                fontFamily: "'Playfair Display', serif",
-                color: activeTab === link.path ? "brown" : "black",
-                fontSize: "16px",
-                fontWeight: activeTab === link.path ? "bold" : "normal",
-                position: "relative",
-                "&:after": {
-                  content: '""',
-                  display: "block",
-                  width: activeTab === link.path ? "100%" : "0",
-                  height: "2px",
-                  backgroundColor: "brown",
-                  position: "absolute",
-                  bottom: "-5px",
-                  left: 0,
-                  transition: "width 0.3s ease-in-out",
-                },
-              }}
+              className={`relative text-lg font-serif transition-all duration-300 hover:text-[#8B4513] ${
+                activeTab === link.path
+                  ? "font-bold text-[#8B4513] after:content-[''] after:block after:w-full after:h-[2px] after:bg-[#8B4513] after:absolute after:bottom-[-2px]"
+                  : "text-black"
+              }`}
             >
               {link.title}
-            </Typography>
+            </Link>
           ))}
-        </Box>
+        </div>
 
         {/* Right - Search, Notifications, and Profile */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+        <div className="flex items-center space-x-4">
           {/* Search Icon */}
           <IconButton>
-            <SearchIcon sx={{ color: "black" }} />
+            <SearchIcon className="text-black" />
           </IconButton>
 
           {/* Notification Bell with Badge */}
           <IconButton component={Link} to="/notifications">
             <Badge badgeContent={1} color="error">
-              <NotificationsIcon sx={{ color: "black" }} />
+              <NotificationsIcon className="text-black" />
             </Badge>
           </IconButton>
 
-          {/* Profile Section - Clicking redirects to Profile Page */}
+          {/* Profile Section */}
           <Link
             to="/profile"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "5px 10px",
-              borderRadius: "8px",
-              cursor: "pointer",
-            }}
+            className="flex items-center space-x-2 p-2 rounded-lg cursor-pointer"
           >
-            {/* Profile Picture */}
-            <Avatar
-              src={profilePic}
-              alt="Profile"
-              sx={{ width: 40, height: 40 }}
-            />
-
-            {/* Profile Info */}
-            <Box sx={{ textAlign: "left" }}>
-              <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-                Vetrick W.
-              </Typography>
-              <Typography sx={{ fontSize: "12px", color: "gray" }}>
-                Vetrick@gmail.com
-              </Typography>
-            </Box>
-
-            {/* Dropdown Arrow */}
-            <KeyboardArrowDownIcon sx={{ color: "black" }} />
+            <Avatar src={profilePic} alt="Profile" className="w-10 h-10" />
+            <div className="text-left">
+              <p className="text-sm font-bold">Paige M. </p>
+              <p className="text-xs text-gray-500">paige@gmail.com</p>
+            </div>
+            <KeyboardArrowDownIcon className="text-black" />
           </Link>
-        </Box>
-      </Toolbar>
-    </AppBar>
+        </div>
+      </div>
+    </nav>
   );
 }
 

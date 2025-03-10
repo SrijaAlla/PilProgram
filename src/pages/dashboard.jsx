@@ -1,125 +1,48 @@
 import React from "react";
-<<<<<<< HEAD:src/pages/dashboard.jsx
-import { Box } from "@mui/material";
-import BackgroundHouses from "./../components/backgroundhouses";
-import Greeting from "./../components/Greeting";
-import Listings from "./listings"; // Import the existing Listings component // Import the existing Leads component
-=======
-import { Box, Typography } from "@mui/material";
-import BackgroundHouses from "./backgroundhouses";
-import Greeting from "./Greeting";
-import Listings from "./listings"; // Import the existing Listings component
-import Leads from "./leads"; // Import the existing Leads component
->>>>>>> landing-page:src/dashboard.jsx
+import BackgroundHouses from "../components/backgroundhouses";
+import Greeting from "../components/Greeting";
+import Listings from "./listings";
+import Leads from "./leads";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", lg: "row" }, // Responsive: Column on small screens, row on large screens
-        alignItems: "flex-start",
-        // justifyContent: "space-between",
-        width: "100%",
-        overflowX: "hidden",
-        overflowY: "hidden", // Prevent vertical scroll
-        padding: "40px 0px 0px 0px",
-        gap: { xs: "20px", lg: "40px" }, // Adjust spacing for different screen sizes
-      }}
-    >
-      {/* Greeting Section (Hi Doris) - Left Side */}
-      <Box
-        sx={{
-          width: { xs: "100%", lg: "40%" }, // Larger on desktop, full width on mobile
-          textAlign: "center",
-          // paddingLeft: "3em",
-        }}
-      >
+    <div className="flex flex-col lg:flex-row items-start w-full overflow-hidden pt-10 gap-5 lg:gap-10">
+      {/* Greeting Section */}
+      <div className="w-full lg:w-2/5 text-center">
         <Greeting name="Paige" />
-      </Box>
+      </div>
 
-      {/* Right Section: Leads (Popular) and Listings (Apartment around London) */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: { xs: "100%", lg: "50%" }, // Smaller width on desktop, full width on mobile
-          gap: "30px",
-
-          color: "brown",
-        }}
-      >
-        {/* Leads Section (Popular) */}
-        <Box>
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: "bold",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              fontFamily: "'Playfair Display', serif",
-            }}
-          >
+      {/* Content Section */}
+      <div className="flex flex-col w-full lg:w-1/2 gap-8 text-[#8B4513]">
+        {/* Leads Section */}
+        <div>
+          <h6 className="font-bold font-serif mb-4 uppercase font-playfair text-[#8B4513]">
             Leads
-          </Typography>
-          <Link
-            to="/leads"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <Box
-              sx={{
-                backgroundColor: "#fef6e4",
-                borderRadius: "10px",
-                padding: "15px",
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-                cursor: "pointer",
-                "&:hover": { boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)" },
-                textAlign: "center",
-              }}
-            >
-              {/* <Leads preview={true} /> */}
-            </Box>
+          </h6>
+          <Link to="/leads" className="no-underline text-inherit">
+            <div className="bg-orange-100 rounded-lg p-4 shadow-md cursor-pointer hover:shadow-lg text-center">
+              <Leads preview={true} />
+            </div>
           </Link>
-        </Box>
+        </div>
 
-        {/* Listings Section (Apartment around London) */}
-        <Box>
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: "bold",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              fontFamily: "'Playfair Display', serif",
-            }}
-          >
+        {/* Listings Section */}
+        <div>
+          <h6 className="font-bold font-serif mb-4 uppercase font-playfair text-[#8B4513]">
             Listings
-          </Typography>
-          <Link
-            to="/listings"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <Box
-              sx={{
-                backgroundColor: "#fef6e4",
-                borderRadius: "10px",
-                padding: "15px",
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-                cursor: "pointer",
-                "&:hover": { boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)" },
-                textAlign: "center",
-              }}
-            >
-              <Listings preview={true} />
-            </Box>
+          </h6>
+          <Link to="/listings" className="no-underline text-inherit">
+            <div className="bg-orange-100 rounded-lg shadow-md cursor-pointer hover:shadow-lg text-center p-2 text-sm h-[12em] flex justify-center">
+              <Listings preview={true} className="scale-40" />
+            </div>
           </Link>
-        </Box>
-      </Box>
+        </div>
+      </div>
 
       {/* Background Houses */}
       <BackgroundHouses />
-    </Box>
+    </div>
   );
 }
 
