@@ -5,7 +5,6 @@ import Listings from "./pages/listings";
 import Profile from "./pages/profile";
 import Navbar from "./components/Navbar";
 import ListingProfile from "./pages/ListingProfile";
-import Leads from "./pages/leads";
 function Home() {
   return (
     <Router>
