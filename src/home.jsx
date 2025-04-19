@@ -4,6 +4,7 @@ import Dashboard from "./pages/dashboard";
 import Listings from "./pages/listings";
 import Profile from "./pages/profile";
 import Navbar from "./components/Navbar";
+import Leads from "./pages/leads";
 import ListingProfile from "./pages/ListingProfile";
 function Home() {
   return (
@@ -15,10 +16,11 @@ function Home() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/listings">
-          <Route index element={<Listings/>}/>
-          <Route path="1" element={<ListingProfile/>}/>
+          <Route index element={<Listings />} />
+          <Route path="1" element={<ListingProfile />} />
         </Route>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/leads" element={<Leads />} />
       </Routes>
     </Router>
   );
