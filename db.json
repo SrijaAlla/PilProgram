@@ -1,0 +1,18 @@
+{
+    "listings": [
+      { "id": 1, "title": "Listing 1", "image": "/listings/listing_1.jpg" },
+      { "id": 2, "title": "Listing 2", "image": "/listings/listing_2.jpg" },
+      { "id": 3, "title": "Listing 3", "image": "/listings/listing_3.jpg" },
+      { "id": 4, "title": "Listing 4", "image": "/listings/listing_4.jpg" },
+      { "id": 5, "title": "Listing 5", "image": "/listings/listing_5.jpg" },
+      { "id": 6, "title": "Listing 6", "image": "/listings/listing_6.jpg" },
+      { "id": 7, "title": "Listing 7", "image": "/listings/listing_7.jpg" },
+      { "id": 8, "title": "Listing 8", "image": "/listings/listing_8.jpg" },
+      { "id": 9, "title": "Listing 9", "image": "/listings/listing_9.jpg" },
+      { "id": 10, "title": "Listing 10", "image": "/listings/listing_10.jpg" },
+      { "id": 11, "title": "Listing 11", "image": "/listings/listing_11.jpg" },
+      { "id": 12, "title": "Listing 12", "image": "/listings/listing_12.jpg" },
+      { "id": 13, "title": "Listing 13", "image": "/listings/listing_13.jpg" }
+    ]
+  }
+  
