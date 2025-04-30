@@ -84,6 +84,7 @@ module.exports = {
         DEFAULT: "1rem",
         md: "2rem",
       },
+     
     extend: {},
   },
   plugins: [],
