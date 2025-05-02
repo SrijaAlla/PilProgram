@@ -1,140 +1,88 @@
-import React from "react";
-import { Box, Typography, Avatar, Grid, Paper } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import QrCodeIcon from "@mui/icons-material/QrCode";
+import CustomDropdown from "../components/CustomDropdown";
+import philImage from "../assets/Profile/phil.png"
+import CustomInput from "../components/CustomInput";
+import { useEffect, useRef, useState } from "react";
+import SpecialityItem from "../components/SpecialityItem";
+import emailIcon from "../assets/Profile/sms.svg"
+
 
 function Profile() {
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+  const textareaRef = useRef(null);
+  const [textareaValue, setTextareaValue] = useState("");
+  
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "0px";        // reset
+      const scrollHeight = textareaRef.current.scrollHeight; // read actual content height
+      textareaRef.current.style.height = `${scrollHeight}px`; // grow/shrink
+    }
+  }, [textareaValue]);
+  
+  const specials = ["Negotiation","Relocation","Documentation"];
+
   return (
-    <Box
-      minHeight="100vh"
-      padding="20px"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Typography variant="h4" fontFamily="serif">
-        PARLIAMADE
-      </Typography>
-
-      <Box width="100%" height="2px" bgcolor="black" marginY={2} />
-
-      {/* Grid Layout */}
-      <Grid container spacing={3} justifyContent="center">
-        {/* Ratings */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <Typography variant="h6">4 Star Agent</Typography>
-            <Box display="flex" justifyContent="center" my={1}>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <StarIcon
-                  key={index}
-                  sx={{ color: index < 5 ? "#FFD700" : "#D3D3D3" }}
-                />
-              ))}
-            </Box>
-            <Box display="flex" justifyContent="center" gap={3}>
-              <Box
-                sx={{
-                  backgroundColor: "#F4D03F",
-                  padding: "10px",
-                  borderRadius: "50%",
-                }}
-              >
-                <Typography fontWeight="bold">7</Typography>
-                <Typography fontSize="12px">years</Typography>
-              </Box>
-              <Box
-                sx={{
-                  backgroundColor: "#F4D03F",
-                  padding: "10px",
-                  borderRadius: "50%",
-                }}
-              >
-                <Typography fontWeight="bold">334</Typography>
-                <Typography fontSize="12px">sales</Typography>
-              </Box>
-            </Box>
-          </Paper>
-        </Grid>
-
-        {/* Biography */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <Avatar
-              sx={{ bgcolor: "gray", margin: "auto", width: 60, height: 60 }}
-            >
-              D
-            </Avatar>
-            <Typography variant="h6" fontWeight="bold">
-              Doris Hue
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              they/her/them
-            </Typography>
-            <Typography variant="body2" fontStyle="italic">
-              Partner with Hunt Real Estate
-            </Typography>
-            <Typography fontSize="14px" marginTop={2}>
-              This is a paragraph to talk about the agent, their hobbies, what
-              they do outside of work, and other things they would like to
-              include about themselves in a biography.
-            </Typography>
-          </Paper>
-        </Grid>
-
-        {/* QR Code */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <QrCodeIcon sx={{ fontSize: 80 }} />
-            <Typography variant="body1">Generate a QR code</Typography>
-            <Typography fontSize="12px" color="textSecondary">
-              for open house purposes only.
-            </Typography>
-          </Paper>
-        </Grid>
-
-        {/* Reviews */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <Typography variant="h6">Leave an anonymous review</Typography>
-            <Box display="flex" justifyContent="center" my={1}>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <StarIcon key={index} sx={{ color: "#FFD700" }} />
-              ))}
-            </Box>
-          </Paper>
-        </Grid>
-
-        {/* Contact Info */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <Typography variant="h6">Contact Information</Typography>
-            <Typography fontSize="14px">Phone: (222) 111-1111</Typography>
-            <Typography fontSize="14px">Fax: (222) 111-1111</Typography>
-            <Typography fontSize="14px">Email: Dorish@hunt.com</Typography>
-          </Paper>
-        </Grid>
-
-        {/* Buyer/Seller Perception */}
-        <Grid item xs={12} sm={4}>
-          <Paper
-            sx={{ padding: "20px", borderRadius: "10px", textAlign: "center" }}
-          >
-            <Typography variant="h6">How buyers/sellers see you</Typography>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Box>
+    <div className="container mt-[71px] font-poppins mb-[50px]">
+         <h1 className="font-inter text-3xl font-bold text-rustyNail-800">My <span style={{color: 'black'}}>Profile</span></h1>
+         <div className="flex items-center justify-between mt-[53px]">
+          <div className="flex items-center gap-6">
+              <div className="w-[94px]">
+                <img src={philImage} className="w-full rounded-full"/>
+              </div>
+              <div>
+                <h2 className="font-medium text-lg">Phil Dunphy</h2>
+                <h3 style={{color: "#969696"}}>phildunphy@gmail.com</h3>
+              </div>
+            </div>
+            <div>
+                <button className="py-2.5 px-16 text-white rounded-lg text-[15px] font-normal" style={{backgroundColor: "#A68B64"}}>Edit Image</button>
+            </div>
+         </div>
+         <div className="mt-8 grid grid-cols-2 gap-y-6 gap-x-8 grid-rows-4 font-mons">
+            <CustomInput label={"Full Name"} placeHolder={"Phil Dunphy"} labelId={"FullName"} />
+            <CustomInput label={"Nick Name"} placeHolder={"Clive Bixby"} labelId={"NickName"} />
+            <CustomDropdown label={"Gender"} placeHolder={"Gender"} labelId={"Gender"} optionsgiven={options}/>
+            <CustomDropdown label={"State"} placeHolder={"State"} labelId={"state"} optionsgiven={options}/>
+            <CustomDropdown label={"County"} placeHolder={"County"} labelId={"county"} optionsgiven={options}/>
+            <CustomDropdown label={"City"} placeHolder={"City"} labelId={"city"} optionsgiven={options}/>
+            <CustomDropdown label={"Experience"} placeHolder={"30 Years"} labelId={"experience"} optionsgiven={options}/>
+            <CustomInput label={"Age"} placeHolder={"Enter Age"} labelId={"age"} typeGiven="number"/>
+         </div>
+         <div className="mt-6 font-mons">
+            <label className="font-medium" >About Me</label>
+            <textarea ref={textareaRef} value={textareaValue} onChange={(e)=> setTextareaValue(e.target.value)} className="p-3 mt-3.5  font-light w-full outline-none resize-none min-h-24" style={{backgroundColor: "#F2F2F2"}}></textarea>
+         </div>
+         <div className="flex flex-col">
+          <div className="flex gap-6 mt-6">
+              <CustomInput label={"Speciality"} placeHolder={"Negotiation"} labelId={"speciality"}/>
+              <div className="self-end">
+                <button className="py-3 px-16 text-white rounded-lg text-[15px] font-normal" style={{backgroundColor: "#A68B64"}}>Add Speciality</button>
+              </div>
+          </div>
+          <div className="flex flex-wrap mt-5 gap-4">
+            { specials.map((special)=> <SpecialityItem specialityName={special}/> )}
+          </div>
+          <div className="mt-6 flex flex-col items-start">
+            <h2 className="font-medium">My Email Address</h2>
+            <div className="mt-6 flex items-center gap-5">
+              <div className="w-11 h-11 flex rounded-full" style={{backgroundColor: "#F7F4F0"}}>
+                <img src={emailIcon} className="object-none" alt="showing an email"/>
+              </div>
+              <div>
+                <h3 className="font-normal text-sm">phildunphy@gmail.com</h3>
+                <h3 className="text-sm" style={{color: "#969696"}}>1 month ago</h3>
+              </div>
+            </div>
+            <div className="mt-7">
+              <button className="font-normal text-sm py-2.5 px-5 rounded-lg" style={{backgroundColor: "#F7F4F0", color:"#A68B64"}} >+Add Email Address</button>
+            </div>
+          </div>
+         </div>
+    </div>
   );
 }
 
