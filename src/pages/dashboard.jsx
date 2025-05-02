@@ -6,7 +6,6 @@ import Leads from "./leads";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
-
   return (
     <div className="flex flex-col lg:flex-row items-start w-full overflow-hidden pt-10 gap-5 lg:gap-10">
       {/* Greeting Section */}
@@ -35,14 +34,14 @@ function Dashboard() {
           </h6>
           <Link to="/listings" className="no-underline text-inherit">
             <div className="bg-orange-100 rounded-lg shadow-md cursor-pointer hover:shadow-lg text-center p-2 text-sm h-[12em] flex justify-center">
-             <Leads preview={true}/>
+              <Leads preview={true} />
             </div>
           </Link>
         </div>
       </div>
 
       {/* Background Houses */}
-      <BackgroundHouses />
+      {/* <BackgroundHouses /> */}
     </div>
   );
 }
