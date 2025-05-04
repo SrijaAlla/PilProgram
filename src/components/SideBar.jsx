@@ -1,3 +1,4 @@
+// --- SideBar.jsx ---
 import { Checkbox, FormControlLabel } from "@mui/material";
 import PriceRange from "./PriceRange";
 import { useState } from "react";
@@ -15,8 +16,10 @@ function SideBar() {
   const [rangeValues, setRangeValues] = useState({ min: 10000, max: 200000 });
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedBedroom, setBedroom] = useState(null);
+  const [selectedBathroom, setBathroom] = useState(null);
 
   const handleBedroomChange = (value) => setBedroom(value);
+  const handleBathroomChange = (value) => setBathroom(value);
   const handleLocationChange = (value) => setSelectedLocation(value);
   const handleRangeChange = (values) => setRangeValues(values);
 
@@ -44,11 +47,11 @@ function SideBar() {
   };
 
   return (
-    <div className="w-full h-full md:sticky md:top-4 p-4 md:h-[calc(100vh-2rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 space-y-6 font-sans text-sm">
+    <div className="hidden md:block fixed left-0 top-[90px] h-[calc(100vh-80px)] overflow-y-auto bg-stone-200 p-4 w-72 border-r border-gray-300">
       <h3 className="text-lg font-semibold">Filters</h3>
 
       {/* Category */}
-      <div>
+      <div className="mt-4">
         <h4 className="text-sm font-medium mb-2">Category</h4>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           {categories.map((category, index) => (
@@ -63,44 +66,36 @@ function SideBar() {
 
       {/* Price Range */}
       <div className="mt-8">
-        <h4 className="text-lg mb-4">Price Range</h4>
-        <PriceRange
-          min={10000}
-          max={200000}
-          onChange={handleRangeChange}
-          className=""
-        />
+        <h4 className="text-sm font-medium mb-2">Price Range</h4>
+        <PriceRange min={10000} max={200000} onChange={handleRangeChange} />
       </div>
 
       {/* Rooms */}
-      <div>
-        <h4 className="text-sm font-medium mb-2">Rooms</h4>
-        <div className="space-y-3">
-          <div>
-            <label className="text-xs block mb-1">Bedrooms</label>
-            <Select
-              options={bedrooms}
-              value={selectedBedroom}
-              placeholder="-"
-              onChange={handleBedroomChange}
-              styles={customStyles}
-            />
-          </div>
-          <div>
-            <label className="text-xs block mb-1">Bathrooms</label>
-            <Select
-              options={bedrooms}
-              value={selectedBedroom}
-              placeholder="-"
-              onChange={handleBedroomChange}
-              styles={customStyles}
-            />
-          </div>
+      <div className="mt-8 space-y-3">
+        <div>
+          <label className="text-xs block mb-1">Bedrooms</label>
+          <Select
+            options={bedrooms}
+            value={selectedBedroom}
+            placeholder="-"
+            onChange={handleBedroomChange}
+            styles={customStyles}
+          />
+        </div>
+        <div>
+          <label className="text-xs block mb-1">Bathrooms</label>
+          <Select
+            options={bedrooms}
+            value={selectedBathroom}
+            placeholder="-"
+            onChange={handleBathroomChange}
+            styles={customStyles}
+          />
         </div>
       </div>
 
       {/* Location */}
-      <div>
+      <div className="mt-8">
         <h4 className="text-sm font-medium mb-2">Location</h4>
         <Select
           options={locations}
@@ -115,3 +110,8 @@ function SideBar() {
 }
 
 export default SideBar;
+
+// --- Usage in Listings.jsx ---
+// In your <Listings /> page make sure:
+// - you add <SideBar /> inside a div with correct sticky classes
+// - you do not use overflow-hidden on parent unless needed

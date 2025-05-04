@@ -6,8 +6,9 @@ const images = importAll(
   require.context("./../assets/listings", false, /\.(png|jpe?g|svg)$/)
 );
 
-function Leads({ preview = false }) {
-  const displayedImages = preview ? images.slice(0, 5) : images;
+function Leads({ preview = false, maxItems }) {
+  // const displayedImages = preview ? images.slice(0, 5) : images;
+  const displayedImages = preview ? images.slice(0, maxItems || 5) : images;
 
   return (
     <div className={`container mx-auto ${preview ? "pt-3" : "pt-16"}`}>

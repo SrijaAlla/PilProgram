@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import logo from "./../assets/house_logo.png";
 import profilePic from "./../assets/profile.png";
+import ForumIcon from "@mui/icons-material/Forum";
 
 function Navbar() {
   const location = useLocation();
@@ -69,17 +70,21 @@ function Navbar() {
         </div>
 
         {/* Desktop: Search, Notifications, and Profile */}
+        {/* Desktop: Forum, Notifications, and Profile */}
         <div className="hidden md:flex items-center space-x-4">
-          {/* <IconButton>
-            <SearchIcon className="text-black" />
-          </IconButton> */}
+          {/* Community Forum Icon */}
+          <IconButton component={Link} to="/community">
+            <ForumIcon className="text-black" />
+          </IconButton>
 
+          {/* Notifications */}
           <IconButton component={Link} to="/notifications">
             <Badge badgeContent={1} color="error">
               <NotificationsIcon className="text-black" />
             </Badge>
           </IconButton>
 
+          {/* Profile */}
           <Link
             to="/profile"
             className="flex items-center space-x-2 p-2 rounded-lg cursor-pointer"

@@ -5,7 +5,9 @@ import Home from './home'
 function App() {
   return (
     // <BrowserRouter>
+    // <div className="pt-[64px]">
     <Home />
+    // </div>
     // </BrowserRouter>
   )
 }

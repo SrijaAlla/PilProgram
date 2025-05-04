@@ -6,42 +6,43 @@ import Leads from "./leads";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
+  const boxStyle = "bg-orange-100 rounded-lg px-4 py-4 shadow-md w-full h-full";
   return (
-    <div className="flex flex-col lg:flex-row items-start w-full overflow-hidden pt-10 gap-5 lg:gap-10">
+    <div className="flex flex-col items-center w-full overflow-hidden pt-10 gap-10 px-4 md:px-12">
       {/* Greeting Section */}
-      <div className="w-full lg:w-2/5 text-center">
+      <div className="text-center w-full">
         <Greeting name="Paige" />
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col w-full lg:w-1/2 gap-8 text-[#8B4513]">
-        {/* Leads Section */}
-        <div>
-          <h6 className="font-bold font-serif mb-4 uppercase font-playfair text-[#8B4513]">
-            Leads
-          </h6>
-          <Link to="/leads" className="no-underline text-inherit">
-            <div className="bg-orange-100 rounded-lg p-4 shadow-md cursor-pointer hover:shadow-lg text-center">
-              <Leads preview={true} />
-            </div>
-          </Link>
-        </div>
+      <div className="w-full max-w-6xl flex flex-col gap-6 text-[#8B4513]">
+        <div className="flex flex-col lg:flex-row gap-6 w-full justify-center">
+          {/* Common box styles */}
 
-        {/* Listings Section */}
-        <div>
-          <h6 className="font-bold font-serif mb-4 uppercase font-playfair text-[#8B4513]">
-            Listings
-          </h6>
-          <Link to="/listings" className="no-underline text-inherit">
-            <div className="bg-orange-100 rounded-lg shadow-md cursor-pointer hover:shadow-lg text-center p-2 text-sm h-[12em] flex justify-center">
-              <Leads preview={true} />
-            </div>
-          </Link>
+          {/* Leads Section */}
+          <div className="flex flex-col gap-3 w-full lg:w-1/2">
+            <h6 className="font-bold font-serif uppercase text-sm text-center">
+              Leads
+            </h6>
+            <Link to="/leads" className="no-underline text-inherit">
+              <div className={boxStyle + " min-h-[220px]"}>
+                <Leads preview={true} maxItems={3} />
+              </div>
+            </Link>
+          </div>
+          {/* Listings Section */}
+          <div className="flex flex-col gap-3 w-full lg:w-1/2">
+            <h6 className="font-bold font-serif uppercase text-sm text-center">
+              Listings
+            </h6>
+            <Link to="/listings" className="no-underline text-inherit">
+              <div className={boxStyle + " min-h-[220px]"}>
+                <Listings preview={true} maxItems={3} />
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
-
-      {/* Background Houses */}
-      {/* <BackgroundHouses /> */}
     </div>
   );
 }
