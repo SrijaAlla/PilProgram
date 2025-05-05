@@ -6,6 +6,9 @@ import Profile from "./pages/profile";
 import Navbar from "./components/Navbar";
 import Leads from "./pages/leads";
 import ListingProfile from "./pages/ListingProfile";
+import CommunityForum from "./pages/CommunityForum";
+import CommunityPosts from "./pages/CommunityPosts";
+import WritePost from "./pages/WritePost";
 function Home() {
   return (
     <Router>
@@ -21,6 +24,9 @@ function Home() {
         </Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/leads" element={<Leads />} />
+        <Route path="/forum" element={<CommunityForum />} />
+        <Route path="/community" element={<CommunityPosts />} />
+        <Route path="/write-post" element={<WritePost />} />
       </Routes>
     </Router>
   );

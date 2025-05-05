@@ -9,6 +9,7 @@
 /server/.env
 /server/package-lock.json
 
+/src/.env
 # testing
 /coverage
 
