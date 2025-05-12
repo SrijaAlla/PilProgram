@@ -6,9 +6,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ForumIcon from "@mui/icons-material/Forum";
+
 import logo from "./../assets/house_logo.png";
 import profilePic from "./../assets/profile.png";
-import ForumIcon from "@mui/icons-material/Forum";
 
 function Navbar() {
   const location = useLocation();
@@ -17,7 +18,7 @@ function Navbar() {
 
   useEffect(() => {
     setActiveTab(location.pathname);
-    setMenuOpen(false); // Close mobile menu on route change
+    setMenuOpen(false); // Close menu on navigation
   }, [location.pathname]);
 
   const navLinks = [
@@ -27,26 +28,32 @@ function Navbar() {
   ];
 
   return (
-    // <nav className="bg-white p-4 shadow-md w-full z-50">
     <nav className="sticky top-0 bg-white p-4 shadow-md w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        {/* <div className="flex items-center">
-          <img src={logo} alt="Estates" className="h-10 mr-2" />
-          <h1 className="text-xl font-serif uppercase">Parliamade</h1>
-        </div> */}
         <div className="flex items-center">
-          <img src={logo} alt="Estates" className="h-10 mr-2" />
+          <img src={logo} alt="Parliamade" className="h-10 mr-2" />
           <span className="hidden md:inline text-xl font-serif uppercase">
             Parliamade
           </span>
         </div>
 
-        {/* Mobile: Hamburger Menu & Avatar */}
-        <div className="flex items-center md:hidden space-x-4">
+        {/* Mobile: Menu toggle, forum, notifs, avatar */}
+        <div className="flex items-center md:hidden space-x-3">
           <IconButton onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
+
+          <IconButton component={Link} to="/community">
+            <ForumIcon className="text-black" />
+          </IconButton>
+
+          <IconButton component={Link} to="/notifications">
+            <Badge badgeContent={1} color="error">
+              <NotificationsIcon className="text-black" />
+            </Badge>
+          </IconButton>
+
           <Link to="/profile">
             <Avatar src={profilePic} alt="Profile" className="w-9 h-9" />
           </Link>
@@ -69,22 +76,18 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Desktop: Search, Notifications, and Profile */}
         {/* Desktop: Forum, Notifications, and Profile */}
         <div className="hidden md:flex items-center space-x-4">
-          {/* Community Forum Icon */}
           <IconButton component={Link} to="/community">
             <ForumIcon className="text-black" />
           </IconButton>
 
-          {/* Notifications */}
           <IconButton component={Link} to="/notifications">
             <Badge badgeContent={1} color="error">
               <NotificationsIcon className="text-black" />
             </Badge>
           </IconButton>
 
-          {/* Profile */}
           <Link
             to="/profile"
             className="flex items-center space-x-2 p-2 rounded-lg cursor-pointer"
@@ -99,7 +102,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile: Navigation Links */}
+      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="md:hidden mt-4 px-4">
           <div className="flex flex-col gap-4">
@@ -114,6 +117,17 @@ function Navbar() {
                 {link.title}
               </Link>
             ))}
+
+            {/* Forum and Notifications (optional in dropdown) */}
+            <Link to="/community" className="text-base font-serif text-black">
+              Community Forum
+            </Link>
+            <Link
+              to="/notifications"
+              className="text-base font-serif text-black"
+            >
+              Notifications
+            </Link>
           </div>
         </div>
       )}
